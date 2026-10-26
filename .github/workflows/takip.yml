@@ -1,0 +1,32 @@
+name: Duyuruları tara
+
+on:
+  schedule:
+    - cron: "23 4-19 * * *"  # Her saat, TSİ 07:23–22:23
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: takip
+  cancel-in-progress: false
+
+jobs:
+  tara:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || 'muzik-yarisma-52f3afc2229f' }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q cryptography
+      - run: python3 takip.py
+      - name: Değişiklik varsa kaydet
+        run: |
+          git add durum.json bulunanlar.md yarismalar.ics
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Duyuru taraması"
+          git push
