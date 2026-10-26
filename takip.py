@@ -5,6 +5,7 @@ süzer, yeni olanları ntfy ile telefona bildirir. Son başvuru tarihi bulunan
 duyuruları yarismalar.ics takvimine ekler.
 """
 import html
+import http.client
 import json
 import os
 import re
@@ -42,7 +43,7 @@ SOURCES = [("Bursa İl MEM", "https://bursa.meb.gov.tr/", "meb"),
 SOURCES += [(f"{i.capitalize()} İlçe MEM", f"https://{i}.meb.gov.tr/", "meb") for i in ILCELER]
 
 # --- Süzgeç (metin önce Türkçe karakterlerden arındırılır) ---------------------
-MUSIC = r"muzik|koro|sarki|turku|beste|orkestra|enstruman|calgi|baglama|keman|piyano|flut|istiklal marsi|ezgi|polifon|solfej|perkusyon|gitar|mehter|\bses yarismasi|\bmarsi(ni)? guzel"
+MUSIC = r"muzik|koro|sarki|turku|beste|orkestra|enstruman|calgi|baglama|keman|piyano|flut|ezgi|polifon|solfej|perkusyon|gitar|mehter|\bses yarismasi|\bmarsi(ni)? guzel okuma"
 COMPETITION = r"yarisma|festival|senlik|secme|basvuru|katilim|cagri|son tarih|odul|olimpiyat"
 COMPETITION_TITLE = r"yarisma|festival|senlik"
 ERASMUS = r"erasmus|etwinning|\bka1\d\d|\bka2\d\d|akreditasyon|teklif cagri|hareketlilik|ulusal ajans"
@@ -50,6 +51,7 @@ CALL = r"basvuru|cagri|son tarih|teklif|akreditasyon|takvim"
 NEWS_ONLY = r"tamamlandi|gerceklestirildi|ziyaret|cikarmasi|toplantisi|sonuclari|sonuc listesi|tamamlanan|odul toreni|kutlandi"
 OTHER_LEVEL = r"\blise|ilkokul|okul oncesi|anaokul|universite|meslek|\bvet\b|\badu\b|yetiskin|genclik|spor alani|yuksekogretim"
 OUR_LEVEL = r"ortaokul|temel egitim|okul egitimi|\bsch\b|tum kademe"
+NOT_MUSIC_TITLE = r"siir|resim|kompozisyon|fotograf|hikaye|deneme|makale|afis|karikatur|bilgi yarismasi|cizgi"
 NEVER = r"ihale|atama|norm kadro|nakil|kantin|ogretmenler arasi|ogretmen yarisma|personel alim|mulakat|yer degistirme"
 
 TR_MAP = str.maketrans("çğıöşüâîûÇĞİÖŞÜÂÎÛI", "cgiosuaiucgiosuaiui")
@@ -58,7 +60,7 @@ MONTHS = {"ocak": 1, "subat": 2, "mart": 3, "nisan": 4, "mayis": 5, "haziran": 6
 
 
 def norm(s):
-    return " ".join(s.translate(TR_MAP).lower().split())
+    return " ".join(re.sub(r"['’`]", "", s).translate(TR_MAP).lower().split())
 
 
 def has(pattern, text):
@@ -76,7 +78,7 @@ def classify(text):
         return "muzik"
     if has(ERASMUS, t) and has(CALL, t) and not has(NEWS_ONLY, t):
         return "erasmus"
-    if has(COMPETITION_TITLE, t) and not has(NEWS_ONLY, t):
+    if has(COMPETITION_TITLE, t) and not has(NEWS_ONLY, t) and not has(NOT_MUSIC_TITLE, t):
         return "belki"
     return None
 
@@ -111,7 +113,12 @@ def get(url, timeout=40):
             ctx.load_verify_locations(cadata=_extra_ca[host])
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout, context=ctx) as r:
-                return r.read().decode(r.headers.get_content_charset() or "utf-8", "replace")
+                charset = r.headers.get_content_charset() or "utf-8"
+                try:
+                    raw = r.read()
+                except http.client.IncompleteRead as e:  # bazı siteler bağlantıyı erken kesiyor
+                    raw = e.partial
+                return raw.decode(charset, "replace")
         except Exception as e:
             if attempt == 0 and "CERTIFICATE_VERIFY_FAILED" in str(e) and host not in _extra_ca:
                 _fill_chain(host)
