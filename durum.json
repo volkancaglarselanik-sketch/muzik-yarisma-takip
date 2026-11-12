@@ -1,5 +1,15 @@
 {
- "found": {},
+ "found": {
+  "https://www.ua.gov.tr/haber/avrupa-dayanisma-programi-gonulluluk-faaliyeti-esc51-proje-uygulama-el-kitabi": {
+   "deadline": null,
+   "kind": "erasmus",
+   "seen": "2026-11-12",
+   "source": "Ulusal Ajans",
+   "stamp": "20261112T205714Z",
+   "title": "Avrupa Dayanışma Programı Gönüllülük Faaliyeti (ESC51) Proje Uygulama El Kitabı Türkiye Ulusal Ajansı tarafından, Avrupa Dayanışma Programı Gönüllülük Faaliyeti kapsamında 2026 teklif çağrısında hibe desteği alan yararlanıcı kurumlar için hazırlanmış olan Avrupa Dayanışma Prog... --> 12.11.2026",
+   "url": "https://www.ua.gov.tr/haber/avrupa-dayanisma-programi-gonulluluk-faaliyeti-esc51-proje-uygulama-el-kitabi/"
+  }
+ },
  "seen": {
   "bursa.meb.gov.tr:6548": "2026-11-01",
   "bursa.meb.gov.tr:6554": "2026-10-27",
@@ -160,6 +170,7 @@
   "https://www.bursa.bel.tr/duyuru/orhangazide-su-kesintisi-25": "2026-10-27",
   "https://www.bursa.bel.tr/duyuru/yildirimda-trafik-duzenlemesi-4": "2026-10-27",
   "https://www.bursa.bel.tr/haber/alaturkanin-yildizlari-bursada-sahne-aldi": "2026-10-31",
+  "https://www.bursa.bel.tr/haber/baskan-vekili-biba-amacimiz-bursalilarin-gelecegini-katki-sunmak": "2026-11-12",
   "https://www.bursa.bel.tr/haber/baskan-vekili-biba-cekirge-teras-2027de-bursalilarla-bulusacak": "2026-10-27",
   "https://www.bursa.bel.tr/haber/baskan-vekili-biba-cumhuriyet-demek-her-seydir": "2026-10-29",
   "https://www.bursa.bel.tr/haber/baskan-vekili-biba-gemlik-en-guzel-hizmeti-alacak": "2026-10-27",
@@ -220,6 +231,7 @@
   "https://www.ua.gov.tr/haber/2026-yili-ulke-merkezli-projeler-cevrim-ici-bilgilendirme-toplantisi": "2026-10-27",
   "https://www.ua.gov.tr/haber/2026_ka2_el_kitabi": "2026-10-27",
   "https://www.ua.gov.tr/haber/2026_ka2_r1": "2026-10-27",
+  "https://www.ua.gov.tr/haber/avrupa-dayanisma-programi-gonulluluk-faaliyeti-esc51-proje-uygulama-el-kitabi": "2026-11-12",
   "https://www.ua.gov.tr/haber/erasmus-programi-genclik-alaninda-bireylerin-ogrenme-hareketliligi-ve-spor-alaninda-personel-hareketliligi-2026-yili-proje-uygulama-el-kitabi": "2026-10-27",
   "https://www.ua.gov.tr/haber/ka240-projeleri-basvuru-sonuclari": "2026-10-27",
   "inegol.meb.gov.tr:1908": "2026-10-27",
@@ -286,6 +298,7 @@
   "karacabey.meb.gov.tr:1456": "2026-10-31",
   "karacabey.meb.gov.tr:1457": "2026-11-03",
   "karacabey.meb.gov.tr:1458": "2026-11-10",
+  "karacabey.meb.gov.tr:1460": "2026-11-12",
   "keles.meb.gov.tr:666": "2026-10-27",
   "keles.meb.gov.tr:723": "2026-10-27",
   "keles.meb.gov.tr:724": "2026-10-27",
@@ -457,6 +470,7 @@
   "orhangazi.meb.gov.tr:4135": "2026-11-10",
   "orhangazi.meb.gov.tr:4136": "2026-11-11",
   "orhangazi.meb.gov.tr:4137": "2026-11-12",
+  "orhangazi.meb.gov.tr:4138": "2026-11-12",
   "osmangazi.meb.gov.tr:1098": "2026-10-27",
   "osmangazi.meb.gov.tr:1672": "2026-10-27",
   "osmangazi.meb.gov.tr:1873": "2026-10-27",
@@ -504,6 +518,7 @@
   "tegm.meb.gov.tr:1358": "2026-11-11",
   "tegm.meb.gov.tr:1359": "2026-11-11",
   "tegm.meb.gov.tr:1361": "2026-11-11",
+  "tegm.meb.gov.tr:1362": "2026-11-12",
   "yegitek.meb.gov.tr:4035": "2026-10-27",
   "yegitek.meb.gov.tr:4037": "2026-10-27",
   "yegitek.meb.gov.tr:4038": "2026-10-27",
@@ -575,6 +590,7 @@
   "yildirim.meb.gov.tr:2041": "2026-11-10",
   "yildirim.meb.gov.tr:2043": "2026-11-10",
   "yildirim.meb.gov.tr:2044": "2026-11-10",
-  "yildirim.meb.gov.tr:2045": "2026-11-12"
+  "yildirim.meb.gov.tr:2045": "2026-11-12",
+  "yildirim.meb.gov.tr:2046": "2026-11-12"
  }
 }
